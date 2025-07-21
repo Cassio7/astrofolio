@@ -8,7 +8,7 @@ export const EXPERIENCES: Experience[] = [
         title: "Full Stack Developer",
         year: "10.2024 - present",
         description: `
-- ♦ Built a **web application** for managing the GPS and RFID reader of the company's vehicles fleet, for real-time traking, monitoring and anomaly detection.
+- ♦ Built a **web application** for managing the GPS and RFID reader of the company's vehicles fleet, for real-time tracking, monitoring and anomaly detection.
 - ♦ Developed the infrastructure for the **web application** using **Docker**.
 - ♦ Working within an **Agile development team**, contributing to the design, implementation, and maintenance of the company’s management system.
             `,
