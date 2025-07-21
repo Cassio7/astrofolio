@@ -21,7 +21,6 @@ import { cn, buttonVariants } from "@/lib/utils";
   <span class="sr-only">Toggle theme</span>
 </button>
 <script is:inline>
-  // Check for theme preference in localStorage or system preference
   const getThemePreference = () => {
     if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
       return localStorage.getItem("theme");
@@ -31,7 +30,6 @@ import { cn, buttonVariants } from "@/lib/utils";
       : "light";
   };
 
-  // Set theme on document and in localStorage
   const setThemeAppearance = theme => {
     if (theme === "dark") {
       document.documentElement.classList.add("dark");
@@ -41,21 +39,28 @@ import { cn, buttonVariants } from "@/lib/utils";
     localStorage.setItem("theme", theme);
   };
 
-  // Apply the theme immediately to avoid flash
-  const theme = getThemePreference();
-  setThemeAppearance(theme);
-
-  document.addEventListener("astro:page-load", () => {
+  const setupToggle = () => {
     const toggleButton = document.getElementById("theme-toggle");
+    if (!toggleButton) return;
 
-    // Toggle theme function
     const toggleMode = () => {
       const isDarkMode = document.documentElement.classList.contains("dark");
       const newTheme = isDarkMode ? "light" : "dark";
       setThemeAppearance(newTheme);
     };
 
-    // Add click event listener
-    toggleButton?.addEventListener("click", toggleMode);
+    toggleButton.addEventListener("click", toggleMode);
+  };
+
+  // Applica tema subito
+  setThemeAppearance(getThemePreference());
+
+  // Setup toggle iniziale
+  setupToggle();
+
+  // Dopo ogni navigazione SPA, riapplica tema e toggle
+  document.addEventListener("astro:after-swap", () => {
+    setThemeAppearance(getThemePreference());
+    setupToggle();
   });
 </script>
