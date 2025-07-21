@@ -14,14 +14,13 @@ const coreProjects = projects.filter(project => project.data.type === "core");
 const sideProjects = projects.filter(project => project.data.type === "side");
 ---
 
-<PageLayout
-  description="A collection of things I’ve built, full-stack apps, experiments, and side projects."
-  title="My Projects"
+<PageLayout title="My Projects"
+  description="A collection of apps I’ve built over the years, full-stack apps, experiments, and side projects."
 >
   <Pattern />
   <Box>
     <BoxHeader>
-      <BoxTitle> Built to Last </BoxTitle>
+      <BoxTitle>Main Projects</BoxTitle>
     </BoxHeader>
 
     {coreProjects.map(item => <ProjectItem project={item} />)}
@@ -32,7 +31,7 @@ const sideProjects = projects.filter(project => project.data.type === "side");
       <Pattern />
       <Box>
         <BoxHeader>
-          <BoxTitle>Side Hustles</BoxTitle>
+          <BoxTitle>Side Experiments</BoxTitle>
         </BoxHeader>
         {sideProjects.map(item => <ProjectItem project={item} />)}
       </Box>
