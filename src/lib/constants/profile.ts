@@ -1,12 +1,11 @@
 export const PROFILE_INFO = {
-  role: 'Software Engineer / Full-stack Developer',
-  logo: 'Louai.b',
-  slogan: 'Coding, Creativity, Coffee...',
-  displayName: "Louai Boumediene",
-  email: "boumedienelouai2@gmail.com",
+  role: "Software Developer / Full-stack Developer",
+  logo: "Cassio",
+  slogan: `Sky's the limit...`,
+  displayName: "Alessio Cassieri",
+  email: "alessio.cassieri@protonmail.com",
   about: `
-I'm a **software engineer** passionate about crafting high-quality digital experiences. With expertise in **full-stack** development and a strong eye for **UI/UX**, I build **performant, pixel-perfect** applications that are both functional and visually appealing.  
-Always **learning**, always **iterating**, always pushing boundaries.  
+**Full Stack Developer** with hands-on experience in building **scalable**, high-performance, and user-centered web applications, with a strong emphasis on creating robust, secure, and ethical digital solutions. 
+Passionate about programming, **cybersecurity**, and open source software, with a strong interest in technological innovations.
 `,
 } as const;
-

@@ -1,9 +1,9 @@
 export const SITE = {
   pageType: 'website',
-  author: "Louai Boumediene",
-  profile: "https://louai.site",
-  desc: "My digital space, projects, insights, and thoughts on software engineering.",
-  title: "Louai Boumediene",
+  author: "Alessio Cassieri",
+  profile: "https://alessiocassieri.netlify.app/",
+  desc: "Portfolio, projects, and thoughts on software development.",
+  title: "Alessio Cassieri",
   ogImage: '/og-image.jpg',
   postPerPage: 6,
 } as const;

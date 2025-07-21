@@ -1,26 +1,24 @@
 import {
-  BunJs,
+  Angular,
+  Astro,
+  C,
   Docker,
   Figma,
-  Framer,
   Git,
+  Java,
   MongoDB,
-  NextJs,
+  MySQL,
+  NestJS,
   NodeJs,
+  PHP,
+  PostgreSQL,
+  Postman,
   Python,
-  React,
-  ReactQuery,
   Redis,
-  Redux,
-  ShadcnUI,
   TailwindCSS,
-  TypeScript,
-  Appwrite,
-  Astro
+  TypeScript
 } from "developer-icons";
 
-import HonoIcon from '@/components/ui/icons/hono.astro'
-import FastapiIcon from '@/components/ui/icons/fastapi.astro'
 
 
 export const TECH_STACK = [
@@ -35,20 +33,30 @@ export const TECH_STACK = [
     href: "https://www.python.org/",
     icon: Python,
   },
+  {
+    title: "Java",
+    href: "https://www.java.com/",
+    icon: Java,
+  },
+  {
+    title: "PHP",
+    href: "https://www.php.net/",
+    icon: PHP,
+  },
+  {
+    title: "C",
+    href: "https://www.c-language.org/",
+    icon: C,
+  },
 
   // Frontend Technologies
   {
-    title: "React",
-    href: "https://react.dev/",
-    icon: React,
+    title: "Angular",
+    href: "https://angular.io/",
+    icon: Angular,
   },
   {
-    title: "Next.js",
-    href: "https://nextjs.org/",
-    icon: NextJs,
-  },
-  {
-    title: "Astro.js",
+    title: "Astro",
     href: "https://astro.build/",
     icon: Astro,
   },
@@ -57,31 +65,6 @@ export const TECH_STACK = [
     href: "https://tailwindcss.com/",
     icon: TailwindCSS,
   },
-  {
-    title: "Redux",
-    href: "https://redux.js.org/",
-    icon: Redux,
-  },
-  {
-    title: "Zustand",
-    href: "https://zustand-demo.pmnd.rs/",
-  },
-  {
-    title: "React Query",
-    href: "https://tanstack.com/query/latest",
-    icon: ReactQuery,
-  },
-  {
-    title: "shadcn/ui",
-    href: "https://ui.shadcn.com/",
-    icon: ShadcnUI,
-  },
-  {
-    title: "Motion",
-    href: "https://motion.dev/",
-    icon: Framer,
-  },
-
 
   // Backend Technologies
   {
@@ -90,27 +73,22 @@ export const TECH_STACK = [
     icon: NodeJs,
   },
   {
-    title: "Bun",
-    href: "https://bun.sh/",
-    icon: BunJs,
-  },
-  {
-    title: "FastAPI",
-    href: "https://fastapi.tiangolo.com/",
-    icon: FastapiIcon
-  },
-  {
-    title: "Honojs",
-    href: "https://hono.dev/",
-    icon: HonoIcon
-  },
-  {
-    title: "Appwrite",
-    href: "https://appwrite.io",
-    icon: Appwrite
+    title: "NestJS",
+    href: "https://nestjs.com/",
+    icon: NestJS,
   },
 
   // Databases & Caching
+  {
+    title: "PostgreSQL",
+    href: "https://www.postgresql.org/",
+    icon: PostgreSQL,
+  },
+  {
+    title: "MySQL",
+    href: "https://www.mysql.com/",
+    icon: MySQL,
+  },
   {
     title: "MongoDB",
     href: "https://www.mongodb.com/",
@@ -133,7 +111,11 @@ export const TECH_STACK = [
     href: "https://git-scm.com/",
     icon: Git,
   },
-
+  {
+    title: "Postman",
+    href: "https://www.postman.com/",
+    icon: Postman,
+  },
 
 
   // Miscellaneous

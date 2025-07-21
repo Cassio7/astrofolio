@@ -2,132 +2,100 @@ import type { Experience } from "../types";
 
 export const EXPERIENCES: Experience[] = [
   {
-    company: "Activepieces",
+    company: "Gesenu",
     positions: [
       {
-        title: "Full Stack Software Engineer",
-        year: "05.2025 - present",
+        title: "Full Stack Developer",
+        year: "10.2024 - present",
         description: `
-- ♦ Lemme build something cool first... then I'll tell you what I did 😉.
+- ♦ Built a **web application** for managing the GPS and RFID reader of the company's vehicles fleet, for real-time traking, monitoring and anomaly detection.
+- ♦ Developed the infrastructure for the **web application** using **Docker**.
+- ♦ Working within an **Agile development team**, contributing to the design, implementation, and maintenance of the company’s management system.
             `,
         skills: [
           "TypeScript",
-          "React",
-          "Zustand",
-          "Tailwind CSS",
+          "Angular",
+          "NestJS",
+          "REST API",
+          "Socket.IO",
           "Node.js",
-          "Fastify",
+          "TypeORM",
           "BullMQ",
-          "Redis",
           "PostgreSQL",
-          "Docker",
-          "Playwright",
-          "Vite",
-          "Nx",
-        ]
-      },
-    ],
-  },
-  {
-    company: "BIGmama Technology",
-    positions: [
-      {
-        title: "Fullstack Engineer",
-        year: "04.2024 - 04.2025",
-        description: `
-- ♦ Developed **end-to-end features** across the stack using **Next.js,  Zustand, React Query, FastAPI and Mongodb**.
-- ♦ Conducted **code reviews**, mentored junior developers, and provided guidance on best practices.
-- ♦ Collaborated with **UI/UX designers** to translate **Figma designs** into **accessible, pixel-perfect, and responsive UIs**.
-- ♦ Worked closely with **DevOps engineers** to deploy backend infrastructure on **Kubernetes**.
-- ♦ Partnered with **AI engineers** to integrate **OpenAI models (text completion + embeddings)** and built a **RAG system using Elasticsearch**.
-            `,
-        skills: [
-          "Next.js",
-          "React",
-          "ShadCN UI",
-          "Zustand",
-          "React Query",
-          "Python",
-          "FastAPI",
-          "MongoDB",
-          "Docker",
           "Redis",
-          "Kubernetes",
-          "S3",
-          "Elasticsearch",
-          "ARQ",
-        ],
-      },
-      {
-        title: "Backend Engineer",
-        year: "01.2024 - 04.2024",
-        description: `
-- ♦ Implemented **backend functionalities**, designed **database models**, and optimized APIs using **FastAPI, Python, and MongoDB**.
-- ♦ Developed and maintained a **background worker system** using **ARQ and Redis**.
-- ♦ Brainstormed and debugged **new features and functionalities** with the engineering team.
-- ♦ Refactored and cleaned code, implementing **better coding patterns** and enforcing **formatting & linting rules** using **Ruff**.
-- ♦ Deployed backend services using **Docker & Docker Compose** and improved **CI/CD pipelines** with **GitHub Actions**.
-            `,
-        skills: [
-          "Python",
-          "FastAPI",
-          "MongoDB",
           "Docker",
-          "Redis",
-          "ARQ",
-          "GoLang",
-          "Next.js",
-          "React",
+          "Git",
+          "Version Control",
+          "Agile Methodologies",
         ],
       },
     ],
   },
-
   {
-    company: "Freelance | Upwork | Locally",
+    company: "Freelance | GreyLine Design",
     positions: [
       {
-        title: "MERN Stack Developer",
-        year: "01.2023 - 01.2024",
+        title: "Web Developer",
+        year: "06.2024 - 10-2024",
         description: `
-- ♦ Developed **landing pages and business websites** for local businesses and personal brands.
-- ♦ Built **full-stack MERN applications** for university students, helping them launch **MVPs** for grading projects and startups.
-- ♦ Assisted **university professors** in creating **demo applications** to serve as case studies for students.
+- ♦ Developed a **website** for a local business, enhancing its online presence and user engagement.
+- ♦ Implemented **responsive design** principles to ensure optimal viewing across various devices, and SEO best practies to improve search engine visibility.
+- ♦ Allowed the client to easily sell local products online, increasing their sales and customer reach.
             `,
         skills: [
-          "React",
-          "Express.js",
-          "MongoDB",
-          "Node.js",
-          "Docker",
-          "Tailwind CSS",
+          "WordPress",
+          "Elementor",
+          "HTML",
+          "Shopify",
+          "SEO",
+          "Responsive Design",
+          "Web Development",
+        ],
+      },
+      {
+        title: "Malware Analyst",
+        year: "04.2024 - 06-2024",
+        description: `
+- ♦ Conducted a **malware analysis** on a client's WordPress website, identifying and removing a ClearFake malware infection.
+- ♦ Restored the website to a clean state, removal of malicius files and cleanup of infected and unwanted pluginss.
+- ♦ Wrote a detailed report on the findings and provided recommendations for future security measures.
+            `,
+        skills: ["WordPress", "Malware Analysis", "File System", "SHH"],
+      },
+    ],
+  },
+  {
+    company: "Weedea",
+    positions: [
+      {
+        title: "University Internship",
+        year: "06.2023 - 12/2023",
+        description: `
+- ♦ Analised and improved the **security** of the company's servers.
+- ♦ Created a step-by-step guide to implementing best **security practices** for server hardening.
+- ♦ Conducted **security testing** on web applications and developed my thesis based on the methodologies and results of these assessments.
+            `,
+        skills: [
+          "Zap",
+          "Burp Suite",
+          "OWASP",
+          "Nikto",
+          "NMAP",
+          "Kali Linux",
+          "Security Testing",
+          "Server Hardening",
+          "Latex",
+          "Markdown",
         ],
       },
     ],
   },
-
-  {
-    company: "Fennec Digital",
-    positions: [
-      {
-        title: "Frontend Developer Intern",
-        year: "01.2023 - 03.2023",
-        description: `
-- ♦ Redesigned and developed a **conceptual landing page** for the company using **Next.js, React, and Tailwind CSS**.
-- ♦ Collaborated with **full-stack engineers**, gaining insights into **best practices** in a professional development environment.
-- ♦ Received feedback from **UI/UX and graphic designers** to refine and enhance the visual and user experience of my designs.
-            `,
-        skills: ["Next.js", "React", "Tailwind CSS", "Figma", "Node.js"],
-      },
-    ],
-  },
-
   {
     company: "Education",
     positions: [
       {
-        title: "Web Development & Infographics | University of Boumerdes",
-        year: "09.2022 - 07.2025",
+        title: "Bachelor's Degree in Computer Science | University of Perugia",
+        year: "2020 - 2024",
         description: `
 - ♦ Built a strong foundation in **software engineering**, focusing on **web development** and **UI/UX principles**.
 - ♦ Gained hands-on experience with **C/C++ and Linux**, enhancing problem-solving and system-level programming skills.
@@ -152,4 +120,3 @@ export const EXPERIENCES: Experience[] = [
     ],
   },
 ];
-

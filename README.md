@@ -32,10 +32,5 @@ Customization is simple and straightforward:
 - Theming follows **shadcn's** color palette and can be easily tweaked.
 
 ## Contribute & Support
-Love the project? Give it a ⭐ on GitHub! Contributions are always welcome—whether it's fixing a bug, adding a new feature, or even correcting a small typo.
+This is a fork of Louai Zokerburg [portfolio](https://github.com/Louai-Zokerburg/louai), check it out. Special thank to this awesome guy!
 
-[👉 Check out the repo](https://github.com/Louai-Zokerburg/louai) and make your first pull request!
-
----
-
-Built with ❤️ using **Astro**.
