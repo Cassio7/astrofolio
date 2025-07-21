@@ -1,7 +1,5 @@
 # Minimalistic Portfolio Website
 
-![Screenshot](./public/screenshot-dark.png)
-
 ## Overview
 This is a sleek, modern, and highly customizable portfolio template built using **Astro**. Designed with performance, accessibility, and SEO in mind, it offers a clean and minimalistic experience while providing all the essential features needed for a professional online presence.
 
