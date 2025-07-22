@@ -1,5 +1,5 @@
-import LinkedinIcon from '@/components/ui/icons/linkedin.astro'
-import GithubIcon from '@/components/ui/icons/github.astro'
+import LinkedinIcon from "@/components/ui/icons/linkedin.astro";
+import GithubIcon from "@/components/ui/icons/github.astro";
 
 export const NAV_LINKS = [
   {
@@ -18,12 +18,12 @@ export const NAV_LINKS = [
 
 export const SOCIAL_LINKS = [
   {
-    name: 'Github',
+    name: "Github",
     icon: GithubIcon,
     url: "https://github.com/Cassio7",
   },
   {
-    name: 'Linkedin',
+    name: "Linkedin",
     icon: LinkedinIcon,
     url: "https://www.linkedin.com/in/alessio-cassieri/",
   },

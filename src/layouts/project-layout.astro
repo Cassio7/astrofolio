@@ -27,8 +27,7 @@ interface Props {
   description: string;
 }
 
-const { title, technologies, description, preview, sourceCode, image } =
-  Astro.props;
+const { title, technologies, description, preview, sourceCode, image } = Astro.props;
 ---
 
 <Layout title={`${title}`} ogImage={image} description={description}>
@@ -43,13 +42,7 @@ const { title, technologies, description, preview, sourceCode, image } =
         <div>
           {
             sourceCode && (
-              <LinkBtn
-                ariaLabel="Source code"
-                target="_blank"
-                className="text-xs"
-                variant="default"
-                href={sourceCode}
-              >
+              <LinkBtn ariaLabel="Source code" target="_blank" className="text-xs" variant="default" href={sourceCode}>
                 Source
                 <Github class="size-3" />
               </LinkBtn>
@@ -76,9 +69,7 @@ const { title, technologies, description, preview, sourceCode, image } =
 
     <Box>
       <BoxHeader>
-        <BoxTitle className="text-2xl !font-black md:text-3xl"
-          >{capitalizeFirstLetter(title)}</BoxTitle
-        >
+        <BoxTitle className="text-2xl !font-black md:text-3xl">{capitalizeFirstLetter(title)}</BoxTitle>
       </BoxHeader>
 
       <BoxContent className="space-y-4">

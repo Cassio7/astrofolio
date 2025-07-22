@@ -16,10 +16,8 @@ import {
   Python,
   Redis,
   TailwindCSS,
-  TypeScript
+  TypeScript,
 } from "developer-icons";
-
-
 
 export const TECH_STACK = [
   // Programming Languages
@@ -117,7 +115,6 @@ export const TECH_STACK = [
     icon: Postman,
   },
 
-
   // Miscellaneous
   {
     title: "Figma",
@@ -125,4 +122,3 @@ export const TECH_STACK = [
     icon: Figma,
   },
 ];
-

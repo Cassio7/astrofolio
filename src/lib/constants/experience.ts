@@ -42,15 +42,7 @@ export const EXPERIENCES: Experience[] = [
 - ♦ Implemented **responsive design** principles to ensure optimal viewing across various devices, and SEO best practies to improve search engine visibility.
 - ♦ Allowed the client to easily sell local products online, increasing their sales and customer reach.
             `,
-        skills: [
-          "WordPress",
-          "Elementor",
-          "HTML",
-          "Shopify",
-          "SEO",
-          "Responsive Design",
-          "Web Development",
-        ],
+        skills: ["WordPress", "Elementor", "HTML", "Shopify", "SEO", "Responsive Design", "Web Development"],
       },
       {
         title: "Malware Analyst",
