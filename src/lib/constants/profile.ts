@@ -8,4 +8,5 @@ export const PROFILE_INFO = {
 **Full Stack Developer** with hands-on experience in building **scalable**, high-performance, and user-centered web applications, with a strong emphasis on creating robust, secure, and ethical digital solutions. 
 Passionate about programming, **cybersecurity**, and open source software, with a strong interest in technological innovations.
 `,
+  location: "Italy",
 } as const;
