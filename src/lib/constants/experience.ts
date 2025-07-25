@@ -82,33 +82,4 @@ export const EXPERIENCES: Experience[] = [
       },
     ],
   },
-  {
-    company: "Education",
-    positions: [
-      {
-        title: "Bachelor's Degree in Computer Science | University of Perugia",
-        year: "2020 - 2024",
-        description: `
-- ♦ Built a strong foundation in **software engineering**, focusing on **web development** and **UI/UX principles**.
-- ♦ Gained hands-on experience with **C/C++ and Linux**, enhancing problem-solving and system-level programming skills.
-- ♦ Developed expertise in **relational databases** and **networking**, applying concepts to real-world applications.
-- ♦ Strengthened **communication and teamwork skills** through group projects, presentations, and technical discussions.
-            `,
-        skills: [
-          "C/C++",
-          "Linux",
-          "UI/UX Foundation",
-          "Marketing",
-          "WordPress",
-          "Networking",
-          "Algorithms",
-          "Relational Databases",
-          "Software Engineering",
-          "Self-learning",
-          "Teamwork",
-          "Presentation",
-        ],
-      },
-    ],
-  },
 ];

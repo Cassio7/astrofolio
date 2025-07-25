@@ -1,0 +1,52 @@
+---
+import Badge from "@/components/ui/badge.astro";
+import type { Education } from "@/lib/types";
+import { GraduationCap, CornerDownRightIcon } from "lucide-react";
+interface Props {
+  education: Education;
+}
+
+const { education } = Astro.props;
+---
+
+<div class="space-y-4 p-4 not-last:border-b">
+  <div class="flex items-center justify-between px-2">
+    <div class="flex items-center space-x-4">
+      <span class="size-2 rounded-full bg-foreground/60"></span>
+
+      <h3 class="text-xl font-black">
+        {education.title} | {education.course}
+      </h3>
+    </div>
+    <h2 class="text-lg font-black">
+      {education.institution} - <span class="font-mono text-foreground">{education.year}</span>
+    </h2>
+  </div>
+
+  <div class="relative space-y-4 pl-1 before:absolute before:left-3 before:h-full before:w-px">
+    <div class="block w-full text-left">
+      {
+        education.titleThesis && (
+          <div class="relative z-1 mb-1 flex items-center space-x-3">
+            <GraduationCap className="size-4 bg-background" />
+            <h3 class="text-base underline-offset-4">
+                Thesis: {education.titleThesis}
+            </h3>
+          </div>
+        )
+      }
+      <span class="flex items-center gap-2 pl-7 font-mono text-sm text-foreground">
+        {education.year}
+      </span>
+    </div>
+    {
+      Array.isArray(education.skills) && education.skills.length > 0 && (
+        <div class="mt-2 ml-7 flex max-w-full flex-wrap items-center justify-start gap-1.5 py-2">
+          {education.skills.map(skill => {
+            return <Badge>{skill}</Badge>;
+          })}
+        </div>
+      )
+    }
+  </div>
+</div>

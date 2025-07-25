@@ -1,0 +1,21 @@
+---
+import BoxContent from "@/components/box/content.astro";
+import BoxHeader from "@/components/box/header.astro";
+import Box from "@/components/box/index.astro";
+import BoxTitle from "@/components/box/title.astro";
+import { EDUCATIONS } from "@/lib/constants/education";
+import EducationItem from "./education-item.astro";
+---
+
+<Box>
+  <BoxHeader>
+    <BoxTitle> Education </BoxTitle>
+  </BoxHeader>
+  <BoxContent className="px-0">
+    {
+      EDUCATIONS.map(education => {
+        return <EducationItem education={education} />;
+      })
+    }
+  </BoxContent>
+</Box>
