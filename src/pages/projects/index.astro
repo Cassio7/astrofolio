@@ -20,7 +20,7 @@ const sideProjects = projects.filter(project => project.data.type === "side");
   <Pattern />
   <Box>
     <BoxHeader>
-      <BoxTitle>Main Projects</BoxTitle>
+      <BoxTitle>Main Focus</BoxTitle>
     </BoxHeader>
 
     {coreProjects.map(item => <ProjectItem project={item} />)}
@@ -31,7 +31,7 @@ const sideProjects = projects.filter(project => project.data.type === "side");
       <Pattern />
       <Box>
         <BoxHeader>
-          <BoxTitle>Side Experiments</BoxTitle>
+          <BoxTitle>Side Stuffs</BoxTitle>
         </BoxHeader>
         {sideProjects.map(item => <ProjectItem project={item} />)}
       </Box>
