@@ -7,7 +7,6 @@ export const EDUCATIONS: Education[] = [
     title: "Bachelor's degree",
     course: `Computer Science`,
     year: "2024",
-    description: "test",
     titleThesis: "Analysis and evaluation of vulnerabilities of Web Applications",
     skills: [
       "Algorithms",
@@ -29,7 +28,13 @@ export const EDUCATIONS: Education[] = [
     title: "High School Diploma",
     course: "Computer Science",
     year: "2019",
-    description: "test",
-    skills: [],
+    skills: [
+      'Operating Systems',
+      'Computer Architecture',
+      'Programming Languages',
+      'Object-Oriented Programming',
+      'IT',
+      'Matematics',
+    ],
   },
 ];

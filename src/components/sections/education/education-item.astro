@@ -15,29 +15,25 @@ const { education } = Astro.props;
       <span class="size-2 rounded-full bg-foreground/60"></span>
 
       <h3 class="text-xl font-black">
-        {education.title} | {education.course}
+        {education.title} in {education.course}
       </h3>
     </div>
-    <h2 class="text-lg font-black">
-      {education.institution} - <span class="font-mono text-foreground">{education.year}</span>
-    </h2>
+    <h2 class="text-lg">{education.institution}</h2>
   </div>
 
   <div class="relative space-y-4 pl-1 before:absolute before:left-3 before:h-full before:w-px">
+    <span class="flex items-center gap-2 pl-7 font-mono text-sm text-foreground">
+      {education.year}
+    </span>
     <div class="block w-full text-left">
       {
         education.titleThesis && (
           <div class="relative z-1 mb-1 flex items-center space-x-3">
             <GraduationCap className="size-4 bg-background" />
-            <h3 class="text-base underline-offset-4">
-                Thesis: {education.titleThesis}
-            </h3>
+            <h3 class="text-base underline-offset-4">Thesis: {education.titleThesis}</h3>
           </div>
         )
       }
-      <span class="flex items-center gap-2 pl-7 font-mono text-sm text-foreground">
-        {education.year}
-      </span>
     </div>
     {
       Array.isArray(education.skills) && education.skills.length > 0 && (

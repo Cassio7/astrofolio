@@ -16,7 +16,6 @@ export type Education = {
   title: string;
   course: string;
   year: string;
-  description: string;
   titleThesis?: string;
   skills: string[];
 };
