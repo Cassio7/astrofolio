@@ -17,6 +17,7 @@ import {
   Redis,
   TailwindCSS,
   TypeScript,
+  VisualStudioCode,
 } from "developer-icons";
 
 export const TECH_STACK = [
@@ -113,6 +114,11 @@ export const TECH_STACK = [
     title: "Postman",
     href: "https://www.postman.com/",
     icon: Postman,
+  },
+  {
+    title: "VS Code",
+    href: "https://code.visualstudio.com/",
+    icon: VisualStudioCode,
   },
 
   // Miscellaneous
