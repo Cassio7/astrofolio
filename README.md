@@ -1,5 +1,7 @@
 # Minimalistic Portfolio Website
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/2152eb5a-0c5d-4f03-9916-a5f98bef99f4/deploy-status)](https://app.netlify.com/projects/alessiocassieri/deploys)
+
 ## Overview
 
 This is a sleek, modern, and highly customizable portfolio template built using **Astro**. Designed with performance, accessibility, and SEO in mind, it offers a clean and minimalistic experience while providing all the essential features needed for a professional online presence.
