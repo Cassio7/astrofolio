@@ -10,20 +10,17 @@ const { education } = Astro.props;
 ---
 
 <div class="space-y-4 p-4 not-last:border-b">
-  <div class="flex items-center justify-between px-2">
-    <div class="flex items-center space-x-4">
-      <span class="size-2 rounded-full bg-foreground/60"></span>
+  <div class="flex items-center space-x-4 px-2">
+    <span class="size-2 rounded-full bg-foreground/60"></span>
 
-      <h3 class="text-xl font-black">
-        {education.title} in {education.course}
-      </h3>
-    </div>
-    <h2 class="text-lg">{education.institution}</h2>
+    <h3 class="text-xl font-black">
+      {education.title} in {education.course}
+    </h3>
   </div>
 
   <div class="relative space-y-4 pl-1 before:absolute before:left-3 before:h-full before:w-px">
     <span class="flex items-center gap-2 pl-7 font-mono text-sm text-foreground">
-      {education.year}
+      <h2 class="text-base">{education.institution}</h2> - {education.year}
     </span>
     <div class="block w-full text-left">
       {
