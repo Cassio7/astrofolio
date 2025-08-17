@@ -2,7 +2,7 @@
 name: Trannoi
 type: side
 sourceCode: https://github.com/Cassio7/Trannoi
-image: /og-image/projects/trannoi.png
+image: /og-images/projects/trannoi.png
 technologies:
   - C
   - Shell
@@ -13,3 +13,37 @@ description: Recreated the popular game Among Us as a fully playable command-lin
 # Trannoi
 
 ![Trannoi](/og-images/projects/trannoi.png)
+
+## The Story
+
+A group of astronauts is traveling aboard the spaceship _Skelt_, and their goal is to complete all the scheduled tasks (the quests) required to keep the ship running, so they can reach their destination safely.
+
+However, hidden among them are impostors, whose objective is to secretly eliminate the crew members without being discovered.
+
+Will the astronauts manage to complete their mission before being wiped out?
+
+**Trannoi** is loosely inspired by an existing <a href="https://github.com/Cassio7/Trannoi" target="_blank">game</a>.
+
+## Compilation Instructions
+
+Clone the repository available on <a href="YOUR_REPO_LINK_HERE" target="_blank">GitHub</a> and compile both files: `main.c` and `gamelib.c` separately using the following commands:
+
+```bash
+gcc -c main.c      # generates main.o
+gcc -c gamelib.c   # generates gamelib.o
+```
+
+Now Link the object files to create the final executable:
+
+```bash
+gcc -o trannoi main.o gamelib.o
+```
+
+After compilation, you can run the program with:
+
+```bash
+./trannoi
+```
+
+Now just **enjoy** your mission!
+
