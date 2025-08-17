@@ -1,12 +1,14 @@
 ---
 name: WasteTrucker
 type: core
-image: /
+image: /og-images/projects/wt-login.png
 sourceCode: https://github.com/Cassio7/fleet_wan
 technologies:
   - TypeScript
   - Angular
-  - NodeJS
+  - NestJS
+  - REST
+  - WSDL
   - PostgreSQL
   - Redis
 description: Application for real-time tracking, monitoring and anomaly detection.
@@ -14,4 +16,21 @@ description: Application for real-time tracking, monitoring and anomaly detectio
 
 # WasteTrucker
 
-WIP
+![WasteTrucker](/og-images/projects/wt-dashboard.png)
+
+## Introductions
+
+**WasteTrucker** is an advanced monitoring system designed to provide real-time visibility into company vehicle activity and to ensure the correct functioning of RFID readers and antenna infrastructure.
+
+## Main Goal
+
+The main goal of the application is to monitor and detect anomalies in vehicle operations. Specifically, it performs three types of checks:
+
+- **GPS**  
+  Detects GPS malfunctions or incorrect behavior, where the reported vehicle position does not match the actual location.
+
+- **Antenna**  
+  Identifies issues with the onboard device responsible for reading tags applied to containers, indicating a possible hardware malfunction.
+
+- **Session**  
+  Verifies whether the last recorded and saved event on the vehicle corresponds to the actual closure of its most recent session.
