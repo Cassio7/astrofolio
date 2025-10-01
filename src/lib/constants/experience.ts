@@ -10,7 +10,7 @@ export const EXPERIENCES: Experience[] = [
         description: `
 - ♦ Built a **web application** for managing the GPS and RFID reader of the company's vehicles fleet, for real-time tracking, monitoring and anomaly detection.
 - ♦ Working within an **Agile development team**, contributing to the design, implementation, and maintenance of the company’s management system.
-- ♦ Managing the infrastructure for the **web applications** using **Docker Swarm**.
+- ♦ Architected and maintained the company’s web application infrastructure, leveraging **Docker Swarm** to ensure scalability, reliability, and efficient container orchestration.
             `,
         skills: [
           "TypeScript",
