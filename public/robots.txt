@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://alessiocassieri.netlify.app//sitemap-index.xml
