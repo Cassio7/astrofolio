@@ -8,9 +8,9 @@ export const EXPERIENCES: Experience[] = [
         title: "Full Stack Developer",
         year: "10.2024 - present",
         description: `
-- ♦ Built a **web application** for managing the GPS and RFID reader of the company's vehicles fleet, for real-time tracking, monitoring and anomaly detection.
-- ♦ Working within an **Agile development team**, contributing to the design, implementation, and maintenance of the company’s management system.
-- ♦ Architected and maintained the company’s web application infrastructure, leveraging **Docker Swarm** to ensure scalability, reliability, and efficient container orchestration.
+- ♦ Full-stack development of internal platforms, with the design of **resilient containerized architectures**: orchestration with self-healing mechanisms to ensure reliability and service continuity, 
+reverse proxy, and separation of services into modular components
+- ♦ Development of a **CMS-based** content delivery system, integrated with web and mobile applications.
             `,
         skills: [
           "TypeScript",
