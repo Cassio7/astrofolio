@@ -3,7 +3,6 @@ import {
   Astro,
   C,
   Docker,
-  Figma,
   Git,
   Java,
   MongoDB,
@@ -12,12 +11,10 @@ import {
   NodeJs,
   PHP,
   PostgreSQL,
-  Postman,
   Python,
   Redis,
   TailwindCSS,
   TypeScript,
-  VisualStudioCode,
 } from "developer-icons";
 
 export const TECH_STACK = [
@@ -98,7 +95,6 @@ export const TECH_STACK = [
     href: "https://redis.io/",
     icon: Redis,
   },
-
   // DevOps & Development Tools
   {
     title: "Docker",
@@ -109,22 +105,5 @@ export const TECH_STACK = [
     title: "Git",
     href: "https://git-scm.com/",
     icon: Git,
-  },
-  {
-    title: "Postman",
-    href: "https://www.postman.com/",
-    icon: Postman,
-  },
-  {
-    title: "VS Code",
-    href: "https://code.visualstudio.com/",
-    icon: VisualStudioCode,
-  },
-
-  // Miscellaneous
-  {
-    title: "Figma",
-    href: "https://www.figma.com/",
-    icon: Figma,
   },
 ];
