@@ -1,0 +1,96 @@
+---
+import BoxContent from "@/components/box/content.astro";
+import BoxHeader from "@/components/box/header.astro";
+import Box from "@/components/box/index.astro";
+import BoxTitle from "@/components/box/title.astro";
+import Footer from "@/components/footer.astro";
+import Navbar from "@/components/navbar/index.astro";
+import Pattern from "@/components/ui/pattern.astro";
+import Layout from "@/layouts/layout.astro";
+import { SITE } from "@/lib/config";
+import { PROFILE_INFO } from "@/lib/constants/profile";
+
+const title = "Terms & Conditions";
+---
+
+<Layout title={title}>
+  <Navbar />
+  <Pattern className="h-14" />
+  <main class="mx-auto max-w-3xl flex-1" aria-label="Main content">
+    <Box>
+      <BoxHeader>
+        <BoxTitle className="text-2xl !font-black">Terms & Conditions</BoxTitle>
+      </BoxHeader>
+      <BoxContent>
+        <section class="prose max-w-none">
+          <h2>Introduction</h2>
+          <p>
+            These Terms and Conditions ("Terms") govern your use of {SITE.profile}, operated by <strong
+              >{PROFILE_INFO.displayName}</strong
+            >. By using this site you agree to these Terms. If you do not agree, please do not use the site.
+          </p>
+
+          <h2>Use of the site</h2>
+          <p>
+            This site is a personal portfolio and informational resource. Content is provided for general information
+            and portfolio purposes only. You may view, share, and download content for personal, non-commercial use with
+            attribution where required. Do not misuse the site or attempt to access restricted areas.
+          </p>
+
+          <h2>Intellectual property</h2>
+          <p>
+            All original content on the site (text, images, code samples) is owned by <strong
+              >{PROFILE_INFO.displayName}</strong
+            > unless otherwise noted. You may not reproduce, distribute, or create derivative works for commercial use without
+            prior written permission. For permissions contact: <a href={`mailto:${PROFILE_INFO.email}`}
+              >{PROFILE_INFO.email}</a
+            >.
+          </p>
+
+          <h2>No professional advice</h2>
+          <p>
+            Content on this site is not professional advice (legal, financial, medical, or otherwise). Do not rely on it
+            as such. For professional advice, consult a qualified professional.
+          </p>
+
+          <h2>External links and third-party content</h2>
+          <p>
+            This site may contain links to third-party websites or embedded third-party content. I do not control those
+            sites or content and am not responsible for their accuracy or policies.
+          </p>
+
+          <h2>Limitation of liability and disclaimer of warranties</h2>
+          <p>
+            The site is provided "as is" without warranties of any kind, express or implied. To the fullest extent
+            permitted by law, <strong>{PROFILE_INFO.displayName}</strong> is not liable for any indirect, incidental, special,
+            or consequential damages arising from use of the site. In jurisdictions that do not allow exclusion, liability
+            is limited to the maximum permitted.
+          </p>
+
+          <h2>Indemnification</h2>
+          <p>
+            You agree to indemnify and hold harmless <strong>{PROFILE_INFO.displayName}</strong> from claims arising from
+            your misuse of the site or violation of these Terms.
+          </p>
+
+          <h2>Modifications</h2>
+          <p>
+            I may modify the site and these Terms at any time. Continued use after changes indicates acceptance of the
+            updated Terms.
+          </p>
+
+          <h2>Governing law</h2>
+          <p>
+            These Terms are governed by the laws of <strong>{PROFILE_INFO.location}</strong>. Replace this placeholder
+            with your preferred jurisdiction if needed.
+          </p>
+
+          <h2>Contact</h2>
+          <p>Questions about these Terms: <a href={`mailto:${PROFILE_INFO.email}`}>{PROFILE_INFO.email}</a>.</p>
+        </section>
+      </BoxContent>
+    </Box>
+  </main>
+  <Pattern />
+  <Footer />
+</Layout>
