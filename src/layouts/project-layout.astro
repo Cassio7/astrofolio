@@ -33,7 +33,7 @@ const { title, technologies, description, preview, sourceCode, image } = Astro.p
 <Layout title={`${title}`} ogImage={image} description={description}>
   <Navbar />
 
-  <main class="mx-auto flex-1 max-w-3xl" aria-label="Main content">
+  <main class="mx-auto w-full max-w-3xl flex-1" aria-label="Main content">
     <Pattern className="h-14">
       <div class="z-1 mx-2 mt-auto flex w-full items-center justify-between">
         <LinkBtn ariaLabel="Back btn" href="/projects">
@@ -93,6 +93,5 @@ const { title, technologies, description, preview, sourceCode, image } = Astro.p
       </BoxContent>
     </Box>
   </main>
+  <Footer />
 </Layout>
-
-<Footer />

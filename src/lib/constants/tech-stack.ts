@@ -6,12 +6,15 @@ import {
   Git,
   Java,
   MongoDB,
+  Linux,
   MySQL,
   NestJS,
+  NextJs,
   NodeJs,
   PHP,
   PostgreSQL,
   Python,
+  React,
   Redis,
   TailwindCSS,
   TypeScript,
@@ -50,6 +53,16 @@ export const TECH_STACK = [
     title: "Angular",
     href: "https://angular.io/",
     icon: Angular,
+  },
+  {
+    title: "React",
+    href: "https://react.dev/",
+    icon: React,
+  },
+  {
+    title: "Next.js",
+    href: "https://nextjs.org/",
+    icon: NextJs,
   },
   {
     title: "Astro",
@@ -105,5 +118,10 @@ export const TECH_STACK = [
     title: "Git",
     href: "https://git-scm.com/",
     icon: Git,
+  },
+  {
+    title: "Linux",
+    href: "https://www.kernel.org/",
+    icon: Linux,
   },
 ];

@@ -4,9 +4,9 @@ export const EDUCATIONS: Education[] = [
   {
     institution: "University of Perugia",
     location: "Perugia, Italy",
-    title: "Bachelor's degree",
+    title: "Bachelor's Degree (B.Sc.)",
     course: `Computer Science`,
-    titleThesis: "Analysis and evaluation of vulnerabilities of Web Applications",
+    titleThesis: "Analysis and Evaluation of Web Application Vulnerabilities",
     skills: [
       "Algorithms",
       "UI/UX Foundation",
@@ -24,7 +24,7 @@ export const EDUCATIONS: Education[] = [
   {
     institution: "ITTS A. Volta",
     location: "Perugia, Italy",
-    title: "High School Diploma",
+    title: "Technical High School Diploma",
     course: "Computer Science",
     skills: [
       'Operating Systems',

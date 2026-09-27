@@ -1,0 +1,49 @@
+---
+name: Agricola Dottorini
+type: core
+sourceCode: https://github.com/agricoladottorini/agricoladottorinishopify
+preview: https://agricoladottorini.it
+technologies:
+  - Shopify
+  - Liquid
+  - JavaScript
+  - CSS
+  - Shopify CLI
+description: Custom Shopify storefront for an Umbrian olive oil producer, selling direct to consumers.
+---
+
+# Agricola Dottorini
+
+## Introduction
+
+**Agricola Dottorini** is the online shop of Azienda Agricola Dottorini, a family business producing extra virgin olive oil in Umbria and selling it directly to consumers.
+
+The storefront is a **custom Shopify theme**. It started from the official Shopify Skeleton theme and was rebuilt around a single idea: **minimal, light and airy**, with large images, very little copy and restrained motion.
+
+## Main Features
+
+- **Homepage**  
+  A full-bleed hero with the brand's hill line drawing itself on load, an asymmetric featured products grid, an editorial manifesto section, the three olive varieties in the blend (Moraiolo, Frantoiano, Leccino) and a card for Convivia, the family's restaurant.
+
+- **Shopping experience**  
+  A paginated product catalog, product pages with a thumbnail rail and sticky details, a quick add button on product cards and a floating cart drawer refreshed through the **Section Rendering API**, with a no-JavaScript cart page as a fallback.
+
+- **Museum archive**  
+  A dedicated page for the Museo della Civiltà Contadina: a masonry photo archive with a native `<dialog>` image viewer.
+
+## Design System
+
+The visual language is built on a small set of **design tokens**: a cool off-white background, a deep olive as the only accent and a warm sand tint reserved for storytelling sections.
+
+- Typography uses a single sans-serif font (Outfit) at two weights.
+- Buttons and inputs are full pills, media and cards share one radius, and nothing else is rounded.
+- Scroll reveal animations collapse to static under `prefers-reduced-motion`.
+
+## Architecture
+
+- Built with **Liquid**, Shopify's templating language, organized into sections, blocks and snippets.
+- Component CSS and JavaScript live inside each section, while only the styles every page needs go into a single critical stylesheet, keeping pages light.
+- Reusable snippets, such as one product card available in three layouts, keep the theme consistent.
+- Local development and linting run through the **Shopify CLI**, and changes made by the store owner in the theme editor are kept in sync with the codebase.
+
+The storefront is in Italian.
