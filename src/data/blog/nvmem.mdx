@@ -1,0 +1,91 @@
+---
+pubDatetime: 2026-10-10
+title: Where Did My Global Packages Go?
+category: coding
+draft: true
+tags:
+  - rust
+  - node
+  - cli
+  - opensource
+description: Every new Node version made my global packages disappear, so I built a small tool in Rust to find them and bring them back.
+---
+
+# Where Did My Global Packages Go?
+
+You know that feeling. You install a fresh Node version with `nvm install`, open the terminal, type `tsc`... and nothing.
+`command not found`.
+
+So you start the usual detective work: what did I have installed before? `pnpm` for sure, `shopify` because I work on Shopify themes, `typescript`, and probably something else I'll only remember three days later, exactly when I need it.
+
+The reason is simple, and a bit annoying: with **nvm**, every Node version lives in its own folder, with its own global packages. New version, empty folder. Nothing gets carried over.
+
+## The problem
+
+nvm does have an option for this, `--reinstall-packages-from`, but you need to remember it _at install time_. And it doesn't answer the questions I actually had:
+
+- What's installed in **each** of my Node versions?
+- What does version 24 have that 26 doesn't?
+- Which version has `tsc` in it?
+- Is anything outdated, or even deprecated?
+
+Doing this by hand means running `nvm use`, then `npm ls -g`, for every single version, and comparing the lists by eye. It works, but it's slow, it's boring, and it's exactly the kind of thing a developer should never do twice xD
+
+So I did what every developer does: instead of solving it in five minutes, I built a tool.
+
+## Meet nvmem
+
+**nvmem** (_nvm_ + _memory_) does one thing: it shows you what's installed in every Node version, and helps you copy it to the next one.
+
+```bash
+nvmem                  # every version and its global packages, as a tree
+nvmem --table          # package × version matrix
+nvmem diff 24 26       # what 24 has that 26 doesn't, plus the command to install it
+nvmem which tsc        # which versions have it
+nvmem -u               # also check npm for updates and deprecations
+```
+
+The part I use the most is `diff`. It doesn't just tell you what's missing, it prints the exact `npm install -g` command to fix it, so you can copy and paste it, or run it directly:
+
+```bash
+eval "$(nvmem diff 24 26 --command-only)"
+```
+
+New Node version, one command, and all my tools are back.
+
+## Why Rust?
+
+At work I write TypeScript every day, with NestJS and Angular. So the obvious choice would have been a small Node script. But here's the joke: **a tool that fixes your Node setup shouldn't depend on your Node setup.** If your current Node version is the broken or empty one, a Node-based tool is the first thing that stops working.
+
+Rust solved that, and gave me a few nice extras:
+
+- **One single binary.** No runtime, no `node_modules`, nothing to install first. You download one file and it works, on macOS, Linux and Windows.
+- **Fast.** nvmem doesn't call `nvm` or `npm` at all. It reads nvm's folders directly from disk, so the full list shows up instantly instead of waiting for `npm ls -g` once per version.
+- **It made me learn something new.** Going from TypeScript to Rust is not a walk in the park. The compiler is strict, and at the beginning it feels like it's arguing with you about everything. But once the code compiles, it usually just works, and that feeling is pretty addictive.
+
+## Small tool, serious care
+
+Even if it's a small project, it's something people install with a one-line `curl | sh`, and that comes with responsibility. So I tried to do things properly:
+
+- It's **offline by default**. It only talks to the npm registry when you ask for it with `-u`, so your list of packages stays on your machine.
+- The install scripts **verify every download with a SHA256 checksum**.
+- Release binaries come with a **signed build attestation**, proving they were built on GitHub from the real source code.
+- Package names are validated before they end up in a shell command, because a tool that prints commands for you to `eval` shouldn't be the reason something weird gets executed.
+
+Probably overkill for a package lister. But if I'm asking people to trust my binary, it's the least I can do.
+
+## Try it
+
+```bash
+# macOS / Linux
+curl -fsSL https://raw.githubusercontent.com/Cassio7/nvmem/main/install.sh | sh
+```
+
+```powershell
+# Windows (PowerShell)
+irm https://raw.githubusercontent.com/Cassio7/nvmem/main/install.ps1 | iex
+```
+
+The project is open source on [GitHub](https://github.com/Cassio7/nvmem), under the MIT license. It only supports nvm and nvm-windows for now, so no fnm, Volta or asdf, at least not yet.
+
+If you try it, let me know what you think. Issues, ideas and stars are all welcome, and if it saves you even one `command not found` after a Node update, my job here is done.
