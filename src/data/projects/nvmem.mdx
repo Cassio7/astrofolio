@@ -1,0 +1,66 @@
+---
+name: nvmem
+type: core
+sourceCode: https://github.com/Cassio7/nvmem
+technologies:
+  - Rust
+  - Shell
+  - PowerShell
+description: Cross-platform CLI in Rust that lists the global npm packages of every Node version managed by nvm, flags updates and prints the command to move them to a new version.
+---
+
+# nvmem
+
+> See what's installed in every Node version, and copy it to the next one.
+
+## Introduction
+
+Every Node version managed by **nvm** (macOS, Linux) or **nvm-windows** has its own set of global packages. Install a new Node and your `tsc`, `pnpm` or `shopify` commands are suddenly gone, and there's no easy way to see what you had before.
+
+**nvmem** solves that. It lists the global packages of each Node version, flags outdated and deprecated ones, and prints the exact command to reinstall them on another version.
+
+It's read-only, offline by default, never spawns `nvm` or `npm`, and ships as a single binary.
+
+## Main Features
+
+- **Overview**  
+  `nvmem` shows every installed Node version and its global packages as a tree, or as a package × version matrix with `--table`. It marks the default and current versions, packages linked with `npm link`, and the commands each package adds.
+
+- **Diff between versions**  
+  `nvmem diff 24 26` shows what version 24 has that 26 doesn't, and prints the `npm install -g` command to bring it over. With `--command-only` the output can be piped straight into the shell.
+
+- **Find a command**  
+  `nvmem which tsc` tells you which Node versions have a package or command installed.
+
+- **Updates and deprecations**  
+  With `-u`, nvmem asks the npm registry about every package in parallel, caches the answers for 6 hours, and marks newer versions and deprecated packages.
+
+## How it works
+
+- It reads nvm's folders directly from disk instead of calling `nvm` or `npm`, so it's fast and has no side effects.
+- It never touches the network unless you pass `-u`, so your list of packages stays private by default.
+- Colors switch off automatically when the output is piped or `NO_COLOR` is set.
+
+## Security & Distribution
+
+Since it's a tool people install with a one-line `curl | sh`, I put extra care into the supply chain:
+
+- **CI on GitHub Actions** builds and tests on Linux, macOS and Windows. Pushing a `v*` tag builds release binaries for 5 targets.
+- One-line **install scripts** for macOS/Linux (`sh`) and Windows (PowerShell) verify every download against its **SHA256 checksum**.
+- Release binaries carry a signed **build provenance attestation**, proving they were built from this repository's code.
+- Package names and versions are validated before they go into generated shell commands, and terminal control characters are stripped from the output.
+- Workflows use least-privilege permissions and actions pinned to exact commits, kept up to date by Dependabot.
+
+## Install
+
+```bash
+# macOS / Linux
+curl -fsSL https://raw.githubusercontent.com/Cassio7/nvmem/main/install.sh | sh
+```
+
+```powershell
+# Windows (PowerShell)
+irm https://raw.githubusercontent.com/Cassio7/nvmem/main/install.ps1 | iex
+```
+
+The project is open source under the MIT license.
