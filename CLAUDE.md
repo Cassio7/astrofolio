@@ -59,7 +59,7 @@ Add `src/data/projects/<slug>.mdx`. Frontmatter (see `content.config.ts`):
 
 ### New article
 Add `src/data/blog/<slug>.mdx`. Frontmatter: `pubDatetime` (date), `title`, `category`, `description`, optional `series`, `image`, `draft`, `tags` (defaults to `["others"]`).
-Note: drafts are filtered out of the article list and article pages, but `categories/[category].astro` and `series/[series].astro` call `getCollection("blog")` without the draft filter.
+Articles with `draft: true` are excluded everywhere (every `getCollection("blog", ({ data }) => !data.draft)`), so they never get a page; keep that filter on any new query.
 
 ## Conventions
 
