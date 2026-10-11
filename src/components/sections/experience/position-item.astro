@@ -13,24 +13,24 @@ const { position } = Astro.props;
 
 <div>
   <div class="block w-full text-left">
-    <div class="relative z-1 mb-1 flex items-center space-x-3">
+    <div class="relative z-1 mb-2 flex items-center space-x-3">
       <Code2 className="size-4 bg-background" />
       <h3 class="text-base font-black underline-offset-4">
         {position.title}
       </h3>
     </div>
-    <span class="flex items-center gap-2 pl-7 font-mono text-sm text-foreground">
+    <span class="flex items-center gap-2 pl-7 font-mono text-sm text-muted-foreground">
       {position.year}
     </span>
   </div>
 
-  <div class="description-container my-4 overflow-hidden">
+  <div class="description-container mt-6 overflow-hidden">
     <div class="description-content max-h-0 overflow-hidden transition-all duration-300">
-      <div class="" set:html={markdownToHtml(position.description, "ml-7 text-sm leading-7")} />
+      <div class="description-body ml-7" set:html={markdownToHtml(position.description)} />
 
       {
         Array.isArray(position.skills) && position.skills.length > 0 && (
-          <div class="mt-2 ml-7 flex max-w-full flex-wrap items-center justify-start gap-1.5 py-2">
+          <div class="mt-8 ml-7 flex max-w-full flex-wrap items-center justify-start gap-2">
             {position.skills.map(skill => {
               return <Badge>{skill}</Badge>;
             })}
@@ -40,7 +40,7 @@ const { position } = Astro.props;
     </div>
 
     <button
-      class="toggle-btn mt-2 ml-7 flex cursor-pointer items-center gap-1 rounded-md border px-4 py-2 text-xs font-medium text-primary hover:underline focus:outline-none"
+      class="toggle-btn mt-8 ml-7 flex cursor-pointer items-center gap-1 rounded-md border px-4 py-2 text-xs font-medium text-primary hover:underline focus:outline-none"
     >
       <span class="toggle-text">Show more</span>
       <ChevronDown className="toggle-icon-down size-4" />
@@ -50,6 +50,36 @@ const { position } = Astro.props;
 </div>
 
 <style>
+  .description-body :global(ul) {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .description-body :global(li) {
+    position: relative;
+    max-width: 68ch;
+    padding-left: 1.25rem;
+    font-size: 0.875rem;
+    line-height: 1.6rem;
+    color: var(--color-muted-foreground);
+    text-wrap: pretty;
+  }
+
+  .description-body :global(li)::before {
+    content: "";
+    position: absolute;
+    top: 0.8rem;
+    left: 0;
+    width: 0.5rem;
+    height: 1px;
+    background: currentColor;
+  }
+
+  .description-body :global(strong) {
+    color: var(--color-foreground);
+    font-weight: 600;
+  }
+
   .description-content.expanded {
     max-height: fit-content;
   }
