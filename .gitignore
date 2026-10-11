@@ -23,6 +23,7 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 
-# local AI agent skills
+# local AI agent config and skills
 .agents/
 skills-lock.json
+.claude/
