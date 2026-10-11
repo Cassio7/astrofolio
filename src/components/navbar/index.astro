@@ -10,15 +10,13 @@ interface Props {
 const { className } = Astro.props;
 ---
 
-<nav
-  class:list={[
-    "screen-line-after sticky top-0 z-50 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60",
-    className,
-  ]}
->
+<nav class:list={["screen-line-after sticky top-0 z-50 w-full bg-background/80 backdrop-blur-md", className]}>
   <div class="mx-auto flex max-w-3xl items-center justify-between px-4 py-1 md:border-x">
-    <a href="/">
-      <h1 class="text-xl font-bold text-primary">{PROFILE_INFO.logo}</h1>
+    <a
+      href="/"
+      class="rounded-sm text-xl font-extrabold tracking-tight text-primary transition-opacity hover:opacity-70"
+    >
+      {PROFILE_INFO.logo}
     </a>
 
     <div class="flex items-center justify-center gap-4">

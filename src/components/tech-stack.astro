@@ -22,8 +22,8 @@ import { TECH_STACK } from "@/lib/constants/tech-stack";
             target="_blank"
             rel="noopener noreferrer"
             class:list={[
-              "flex h-10 min-w-[120px] items-center justify-center gap-2 rounded-md border border-solid bg-blue-50/10 p-2",
-              "transition-all duration-200 hover:bg-blue-50/20",
+              "group flex h-10 min-w-[120px] items-center justify-center gap-2 rounded-md border !border-solid p-2 text-muted-foreground",
+              "transition-all duration-200 hover:-translate-y-0.5 hover:border-foreground/40 hover:bg-secondary hover:text-primary active:translate-y-0 active:scale-[0.98]",
             ]}
           >
             {item.icon && (
