@@ -37,18 +37,18 @@ pnpm format    # format the codebase
 
 ## Editing Content
 
-| What                                    | Where                                        |
-| --------------------------------------- | -------------------------------------------- |
-| Bio, role, email, location              | `src/lib/constants/profile.ts`               |
-| Work experience                         | `src/lib/constants/experience.ts`            |
-| Education                               | `src/lib/constants/education.ts`             |
-| Tech stack                              | `src/lib/constants/tech-stack.ts`            |
-| Nav & social links                      | `src/lib/constants/index.ts`                 |
-| Site title, description, posts per page | `src/lib/config.ts`                          |
-| Articles                                | `src/data/blog/*.mdx`                        |
-| Projects                                | `src/data/projects/*.mdx`                    |
-| Images & OG images                      | `public/`, `public/og-images/projects/`      |
-| Theme colors                            | `src/styles/global.css`                      |
+| What                                    | Where                                   |
+| --------------------------------------- | --------------------------------------- |
+| Bio, role, email, location              | `src/lib/constants/profile.ts`          |
+| Work experience                         | `src/lib/constants/experience.ts`       |
+| Education                               | `src/lib/constants/education.ts`        |
+| Tech stack                              | `src/lib/constants/tech-stack.ts`       |
+| Nav & social links                      | `src/lib/constants/index.ts`            |
+| Site title, description, posts per page | `src/lib/config.ts`                     |
+| Articles                                | `src/data/blog/*.mdx`                   |
+| Projects                                | `src/data/projects/*.mdx`               |
+| Images & OG images                      | `public/`, `public/og-images/projects/` |
+| Theme colors                            | `src/styles/global.css`                 |
 
 The frontmatter fields for articles and projects are defined in `src/content.config.ts`.
 

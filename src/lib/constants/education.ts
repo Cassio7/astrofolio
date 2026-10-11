@@ -27,12 +27,12 @@ export const EDUCATIONS: Education[] = [
     title: "Technical High School Diploma",
     course: "Computer Science",
     skills: [
-      'Operating Systems',
-      'Computer Architecture',
-      'Programming Languages',
-      'Object-Oriented Programming',
-      'IT',
-      'Matematics',
+      "Operating Systems",
+      "Computer Architecture",
+      "Programming Languages",
+      "Object-Oriented Programming",
+      "IT",
+      "Matematics",
     ],
   },
 ];
