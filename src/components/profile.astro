@@ -9,38 +9,66 @@ import { Briefcase, Mail, Paperclip, MapPin } from "lucide-react";
 import VerifiedIcon from "@/components/ui/icons/verified.astro";
 import GithubIcon from "@/components/ui/icons/github.astro";
 import LinkedinIcon from "@/components/ui/icons/linkedin.astro";
+
+const links = [
+  {
+    label: "Resume",
+    href: "https://drive.google.com/file/d/1RVc1kmLBCdCMJRmhOTmYdCT2HyWp5aNq/view?usp=sharing",
+    icon: Paperclip,
+  },
+  { label: "Email", href: `mailto:${PROFILE_INFO.email}`, icon: Mail },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/alessio-cassieri/", icon: LinkedinIcon },
+  { label: "GitHub", href: "https://github.com/Cassio7", icon: GithubIcon },
+];
 ---
 
-<div class="screen-line-after relative flex items-center p-4 md:border-x">
-  <div class="shrink-0">
-    <div class="relative z-1 mx-0.5 my-1">
-      <CassioAvatar
-        className="size-20 rounded-full ring-1 ring-border ring-offset-2 ring-offset-background sm:size-28"
-      />
-    </div>
+<div class="screen-line-after relative overflow-hidden p-4 pt-6 pb-8 md:border-x md:p-8 md:pt-12 md:pb-14">
+  <div
+    aria-hidden="true"
+    class="pointer-events-none absolute inset-0 [background:radial-gradient(60%_80%_at_85%_0%,hsl(var(--primary)/0.07),transparent)]"
+  >
   </div>
 
-  <div class="flex flex-1 flex-col">
-    <div class="flex grow items-end pb-1 pl-4">
-      <div class="line-clamp-1 font-mono text-xs text-muted-foreground">
-        {PROFILE_INFO.slogan}
-      </div>
+  <div class="relative flex flex-col gap-5 sm:flex-row sm:items-end sm:gap-8">
+    <div class="reveal shrink-0" style="--i: 0">
+      <CassioAvatar
+        className="size-20 rounded-2xl ring-1 ring-border ring-offset-4 ring-offset-background sm:size-32"
+        size={128}
+        priority
+      />
     </div>
 
-    <div class="">
-      <h1 class="flex items-center gap-x-2 pl-4 text-2xl font-black text-primary">
+    <div class="flex flex-1 flex-col gap-3">
+      <p class="reveal line-clamp-1 font-mono text-xs text-muted-foreground" style="--i: 1">
+        {PROFILE_INFO.slogan}
+      </p>
+
+      <h1
+        class="reveal flex items-center gap-x-3 text-[2rem] leading-none font-extrabold tracking-tighter text-primary min-[400px]:text-4xl sm:text-6xl"
+        style="--i: 2"
+      >
         {PROFILE_INFO.displayName}
-        <VerifiedIcon class="size-4 text-blue-500" />
+        <VerifiedIcon class="size-5 shrink-0 text-primary sm:size-6" />
       </h1>
 
-      <div class="py-1 pl-4">
-        <p class="text-sm !font-normal">
-          {PROFILE_INFO.role}
+      <div class="reveal flex flex-wrap items-center gap-x-4 gap-y-1.5 text-sm text-muted-foreground" style="--i: 3">
+        <p class="w-full sm:w-auto">{PROFILE_INFO.role}</p>
+        <p class="flex items-center gap-1.5">
+          <Briefcase className="size-3.5" />
+          <span>
+            at{" "}
+            <a
+              href="https://gsa.eco/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="rounded-sm font-medium text-primary underline underline-offset-4 transition-opacity hover:opacity-70"
+            >
+              GSA
+            </a>
+          </span>
         </p>
-      </div>
-      <div class="flex items-center justify-start gap-2 py-1 pl-4">
-        <MapPin className="size-4" />
-        <p class="text-sm !font-normal">
+        <p class="flex items-center gap-1.5">
+          <MapPin className="size-3.5" />
           {PROFILE_INFO.location}
         </p>
       </div>
@@ -48,58 +76,24 @@ import LinkedinIcon from "@/components/ui/icons/linkedin.astro";
   </div>
 </div>
 
-{
-  /* Callout badge
-<div
-  class="screen-line-after inline-flex w-full items-center gap-2 border-x bg-yellow-100 px-3 py-2 text-sm font-semibold dark:bg-yellow-500/10"
->
-  <span class="animate-bounce text-base">👋</span> I'm open to new opportunities
-  —
-  <a href={`mailto:${PROFILE_INFO.email}`} class="underline underline-offset-4">
-    get in touch
-  </a>
-</div>
- */
-}
-
 <Box>
-  <BoxContent className="space-y-3">
-    <span class="flex items-center justify-start gap-2">
-      <Briefcase className="size-4" />
-      Full stack developer at
-      <a href="https://gsa.eco/" target="_blank" class="underline underline-offset-4"> GSA </a>
-    </span>
-
-    <span class="flex items-center justify-start gap-2">
-      <Paperclip className="size-4" />
-      Take a look at my
-      <a
-        href="https://drive.google.com/file/d/1RVc1kmLBCdCMJRmhOTmYdCT2HyWp5aNq/view?usp=sharing"
-        target="_blank"
-        class="underline underline-offset-4"
-      >
-        Resume
-      </a>
-    </span>
-
-    <span class="flex items-center justify-start gap-2">
-      <Mail className="size-4" />
-      Get in touch
-      <a href={`mailto:${PROFILE_INFO.email}`} target="_blank" class="underline underline-offset-4"> Email </a>
-    </span>
-
-    <span class="flex items-center justify-start gap-2">
-      <LinkedinIcon className="size-4" />
-      Let's connect on
-      <a href="https://www.linkedin.com/in/alessio-cassieri/" class="underline underline-offset-4" target="_blank">
-        LinkedIn
-      </a>
-    </span>
-
-    <span class="flex items-center justify-start gap-2">
-      <GithubIcon className="size-4" />
-      Check out my projects on
-      <a href="https://github.com/Cassio7" class="underline underline-offset-4" target="_blank"> GitHub </a>
-    </span>
+  <BoxContent className="md:px-8">
+    <ul class="reveal grid grid-cols-2 gap-2 sm:flex sm:flex-wrap" style="--i: 4">
+      {
+        links.map(link => (
+          <li>
+            <a
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center justify-center gap-2 rounded-md border !border-solid px-3 py-2.5 text-sm font-medium text-primary transition-all duration-200 hover:-translate-y-0.5 hover:bg-primary hover:text-primary-foreground active:translate-y-0 active:scale-[0.98]"
+            >
+              <link.icon className="size-4" />
+              {link.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
   </BoxContent>
 </Box>
