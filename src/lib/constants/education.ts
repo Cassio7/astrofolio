@@ -32,7 +32,7 @@ export const EDUCATIONS: Education[] = [
       "Programming Languages",
       "Object-Oriented Programming",
       "IT",
-      "Matematics",
+      "Mathematics",
     ],
   },
 ];

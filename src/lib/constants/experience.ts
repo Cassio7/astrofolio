@@ -55,7 +55,7 @@ export const EXPERIENCES: Experience[] = [
         year: "04.2024 - 06-2024",
         description: `
 - Conducted a **malware analysis** on a client's WordPress website, identifying and removing a ClearFake malware infection.
-- Restored the website to a clean state, removal of malicius files and cleanup of infected and unwanted pluginss.
+- Restored the website to a clean state, removing malicious files and cleaning up infected and unwanted plugins.
 - Wrote a detailed report on the findings and provided recommendations for future security measures.
             `,
         skills: ["WordPress", "Malware Analysis", "File System", "SHH"],
@@ -69,7 +69,7 @@ export const EXPERIENCES: Experience[] = [
         title: "Web Security Intern",
         year: "06.2023 - 12/2023",
         description: `
-- Analised and improved the **security** of the company's servers.
+- Analysed and improved the **security** of the company's servers.
 - Created a step-by-step guide to implementing best **security practices** for server hardening.
 - Conducted **security testing** on web applications and developed my thesis based on the methodologies and results of these assessments.
             `,
