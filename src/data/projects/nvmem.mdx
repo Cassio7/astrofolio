@@ -2,6 +2,7 @@
 name: nvmem
 type: core
 sourceCode: https://github.com/Cassio7/nvmem
+image: /og-images/projects/nvmem.png
 technologies:
   - Rust
   - Shell
@@ -13,9 +14,11 @@ description: Cross-platform CLI in Rust that lists the global npm packages of ev
 
 > See what's installed in every Node version, and copy it to the next one.
 
+![nvmem output: every Node version with its global packages](/og-images/projects/nvmem.png)
+
 ## Introduction
 
-Every Node version managed by **nvm** (macOS, Linux) or **nvm-windows** has its own set of global packages. Install a new Node and your `tsc`, `pnpm` or `shopify` commands are suddenly gone, and there's no easy way to see what you had before.
+Every Node version managed by **nvm** (macOS, Linux) or **nvm-windows** has its own set of global packages. Install a new Node and your `tsc`, `pnpm` or `nodemon` commands are suddenly gone, and there's no easy way to see what you had before.
 
 **nvmem** solves that. It lists the global packages of each Node version, flags outdated and deprecated ones, and prints the exact command to reinstall them on another version.
 
