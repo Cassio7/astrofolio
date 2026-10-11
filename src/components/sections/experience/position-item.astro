@@ -2,7 +2,7 @@
 import Badge from "@/components/ui/badge.astro";
 import { markdownToHtml } from "@/lib/markdown";
 import type { ExperiencePosition } from "@/lib/types";
-import { ChevronDown, ChevronUp, Code2 } from "lucide-react";
+import { ChevronDown, Code2 } from "lucide-react";
 
 interface Props {
   position: ExperiencePosition;
@@ -15,36 +15,39 @@ const { position } = Astro.props;
   <div class="block w-full text-left">
     <div class="relative z-1 mb-2 flex items-center space-x-3">
       <Code2 className="size-4 bg-background" />
-      <h3 class="text-base font-black underline-offset-4">
+      <h3 class="text-base font-bold">
         {position.title}
       </h3>
     </div>
-    <span class="flex items-center gap-2 pl-7 font-mono text-sm text-muted-foreground">
+    <time class="flex items-center gap-2 pl-7 font-mono text-sm text-muted-foreground">
       {position.year}
-    </span>
+    </time>
   </div>
 
-  <div class="description-container mt-6 overflow-hidden">
-    <div class="description-content max-h-0 overflow-hidden transition-all duration-300">
-      <div class="description-body ml-7" set:html={markdownToHtml(position.description)} />
+  <div class="description-container mt-6">
+    <div class="description-content grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-out">
+      <div class="overflow-hidden">
+        <div class="description-body ml-7" set:html={markdownToHtml(position.description)} />
 
-      {
-        Array.isArray(position.skills) && position.skills.length > 0 && (
-          <div class="mt-8 ml-7 flex max-w-full flex-wrap items-center justify-start gap-2">
-            {position.skills.map(skill => {
-              return <Badge>{skill}</Badge>;
-            })}
-          </div>
-        )
-      }
+        {
+          Array.isArray(position.skills) && position.skills.length > 0 && (
+            <div class="mt-8 ml-7 flex max-w-full flex-wrap items-center justify-start gap-2">
+              {position.skills.map(skill => {
+                return <Badge>{skill}</Badge>;
+              })}
+            </div>
+          )
+        }
+      </div>
     </div>
 
     <button
-      class="toggle-btn mt-8 ml-7 flex cursor-pointer items-center gap-1 rounded-md border px-4 py-2 text-xs font-medium text-primary hover:underline focus:outline-none"
+      type="button"
+      aria-expanded="false"
+      class="toggle-btn mt-8 ml-7 flex cursor-pointer items-center gap-1 rounded-md border !border-solid px-4 py-2 text-xs font-medium text-primary transition-all duration-200 hover:bg-secondary active:scale-[0.98]"
     >
       <span class="toggle-text">Show more</span>
-      <ChevronDown className="toggle-icon-down size-4" />
-      <ChevronUp className="toggle-icon-up hidden size-4" />
+      <ChevronDown className="toggle-icon size-4 transition-transform duration-300" />
     </button>
   </div>
 </div>
@@ -81,57 +84,36 @@ const { position } = Astro.props;
   }
 
   .description-content.expanded {
-    max-height: fit-content;
+    grid-template-rows: 1fr;
   }
 
-  .description-container .toggle-icon-up.visible {
-    display: block;
+  .toggle-btn[aria-expanded="true"] :global(.toggle-icon) {
+    transform: rotate(180deg);
   }
 
-  .description-container .toggle-icon-down.hidden {
-    display: none;
+  @media (prefers-reduced-motion: reduce) {
+    .description-content {
+      transition: none;
+    }
   }
 </style>
 
 <script>
   document.addEventListener("astro:page-load", () => {
-    const toggleButtons = document.querySelectorAll(".toggle-btn");
+    document.querySelectorAll<HTMLButtonElement>(".toggle-btn").forEach((button, index) => {
+      const content = button.closest(".description-container")?.querySelector(".description-content");
+      const label = button.querySelector(".toggle-text");
+      if (!content || !label) return;
 
-    toggleButtons.forEach((button, index) => {
-      const container = button.closest(".description-container");
-      if (!container) return;
+      const setExpanded = (expanded: boolean) => {
+        content.classList.toggle("expanded", expanded);
+        button.setAttribute("aria-expanded", String(expanded));
+        label.textContent = expanded ? "Show less" : "Show more";
+      };
 
-      const content = container.querySelector(".description-content");
-      const toggleText = button.querySelector(".toggle-text");
-      const iconDown = button.querySelector(".toggle-icon-down");
-      const iconUp = button.querySelector(".toggle-icon-up");
-
-      if (index === 0) {
-        if (content) content.classList.add("expanded");
-        if (toggleText) toggleText.textContent = "Show less";
-        if (iconDown) iconDown.classList.add("hidden");
-        if (iconUp) iconUp.classList.remove("hidden");
-
-        iconUp?.classList.add("visible");
-      }
-
-      button.addEventListener("click", () => {
-        if (content) {
-          content.classList.toggle("expanded");
-
-          if (content.classList.contains("expanded")) {
-            if (toggleText) toggleText.textContent = "Show less";
-            if (iconDown) iconDown.classList.add("hidden");
-            if (iconUp) iconUp.classList.remove("hidden");
-            iconUp?.classList.add("visible");
-          } else {
-            if (toggleText) toggleText.textContent = "Show more";
-            if (iconDown) iconDown.classList.remove("hidden");
-            if (iconUp) iconUp.classList.add("hidden");
-            iconUp?.classList.remove("visible");
-          }
-        }
-      });
+      // The most recent position starts open
+      setExpanded(index === 0);
+      button.addEventListener("click", () => setExpanded(!content.classList.contains("expanded")));
     });
   });
 </script>

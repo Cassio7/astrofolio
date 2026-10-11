@@ -19,8 +19,14 @@ import { SOCIAL_LINKS } from "@/lib/constants";
     <div class="flex items-center justify-center gap-4">
       {
         SOCIAL_LINKS.map(link => (
-          <a href={link.url} aria-label={link.name}>
-            <link.icon className="size-4 duration-150 hover:text-primary" />
+          <a
+            href={link.url}
+            aria-label={link.name}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="rounded-sm text-foreground/70 transition-all duration-150 hover:-translate-y-0.5 hover:text-primary active:scale-95"
+          >
+            <link.icon className="size-4" />
           </a>
         ))
       }

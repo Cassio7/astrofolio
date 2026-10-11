@@ -25,7 +25,7 @@ const { title, description, backLink } = Astro.props;
 
 <Layout title={`${title}`}>
   <Navbar />
-  <main class="mx-auto w-full max-w-3xl flex-1" aria-label="Main content">
+  <main id="main" class="mx-auto w-full max-w-3xl flex-1" aria-label="Main content">
     <Pattern className="h-14">
       {
         backLink && (
@@ -38,7 +38,7 @@ const { title, description, backLink } = Astro.props;
 
     <Box>
       <BoxHeader>
-        <BoxTitle className="text-2xl !font-black">{capitalizeFirstLetter(title)}</BoxTitle>
+        <BoxTitle className="text-3xl">{capitalizeFirstLetter(title)}</BoxTitle>
       </BoxHeader>
       <BoxContent>
         {description}

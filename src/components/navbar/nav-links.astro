@@ -24,11 +24,16 @@ const isActive = (path: string) => {
           "group relative flex flex-col items-center justify-center text-xs font-medium text-foreground/70 duration-150 hover:text-primary lg:text-sm"
         )}
       >
-        <span class={cn("mb", isActive(link.href) && "text-primary")}>{link.label}</span>
+        <span
+          class={cn("py-2", isActive(link.href) && "text-primary")}
+          aria-current={isActive(link.href) ? "page" : undefined}
+        >
+          {link.label}
+        </span>
 
         <span
           class={cn(
-            "absolute -bottom-px h-[1px] rounded-full bg-primary transition-all duration-150",
+            "absolute bottom-1 h-[1px] rounded-full bg-primary transition-all duration-150",
             isActive(link.href) ? "w-full" : "w-0",
             "group-hover:w-full"
           )}
