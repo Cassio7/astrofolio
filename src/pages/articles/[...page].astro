@@ -8,19 +8,19 @@ import BoxContent from "@/components/box/content.astro";
 
 import LinkTag from "@/components/ui/link-tag.astro";
 
-import { getCollection } from "astro:content";
+import { getArticles } from "@/lib/articles";
 
 import { SITE } from "@/lib/config";
 import type { GetStaticPaths } from "astro";
 import Pagination from "@/components/pagination.astro";
 import PageLayout from "@/layouts/page-layout.astro";
 
-const articles = await getCollection("blog", ({ data }) => !data.draft);
+const articles = await getArticles();
 const categories = [...new Set(articles.map(article => article.data.category))];
 const series = [...new Set(articles.map(article => article.data.series).filter(series => series !== undefined))];
 
 export const getStaticPaths = (async ({ paginate }) => {
-  const articles = await getCollection("blog", ({ data }) => !data.draft);
+  const articles = await getArticles();
   const sortedArticles = articles.sort((a, b) => b.data.pubDatetime.getTime() - a.data.pubDatetime.getTime());
   return paginate(sortedArticles, { pageSize: SITE.postPerPage });
 }) satisfies GetStaticPaths;

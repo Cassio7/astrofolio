@@ -59,7 +59,7 @@ Add `src/data/projects/<slug>.mdx`. Frontmatter (see `content.config.ts`):
 
 ### New article
 Add `src/data/blog/<slug>.mdx`. Frontmatter: `pubDatetime` (date), `title`, `category`, `description`, optional `series`, `image`, `draft`, `tags` (defaults to `["others"]`).
-Articles with `draft: true` are excluded everywhere (every `getCollection("blog", ({ data }) => !data.draft)`), so they never get a page; keep that filter on any new query.
+Articles with `draft: true` show up in `pnpm dev` with a "Draft" badge and are left out of production builds. Always load articles through `getArticles()` in `src/lib/articles.ts`, never `getCollection("blog")` directly, so drafts can't leak into the live site.
 
 ## Conventions
 

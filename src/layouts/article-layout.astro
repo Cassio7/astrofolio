@@ -15,6 +15,7 @@ import BoxContent from "@/components/box/content.astro";
 
 import type { MarkdownHeading } from "astro";
 import LinkBtn from "@/components/ui/link-btn.astro";
+import Badge from "@/components/ui/badge.astro";
 
 interface Props {
   title: string;
@@ -23,9 +24,10 @@ interface Props {
   headings: MarkdownHeading[];
   image?: string;
   description: string;
+  draft?: boolean;
 }
 
-const { title, readTime, description, date, headings, image } = Astro.props;
+const { title, readTime, description, date, headings, image, draft } = Astro.props;
 
 const formattedDate = new Intl.DateTimeFormat("en-GB", {
   day: "2-digit",
@@ -50,6 +52,7 @@ const formattedDate = new Intl.DateTimeFormat("en-GB", {
       <Box>
         <BoxHeader class="text-sm !font-medium text-muted-foreground">
           {formattedDate} • {readTime}
+          {draft && <Badge>Draft</Badge>}
         </BoxHeader>
 
         <Pattern className="screen-line-after" />

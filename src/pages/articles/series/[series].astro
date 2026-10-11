@@ -1,5 +1,5 @@
 ---
-import { getCollection } from "astro:content";
+import { getArticles } from "@/lib/articles";
 import ArticleItem from "@/components/article-item.astro";
 import PageLayout from "@/layouts/page-layout.astro";
 import Pattern from "@/components/ui/pattern.astro";
@@ -9,7 +9,7 @@ import BoxTitle from "@/components/box/title.astro";
 import BoxHeader from "@/components/box/header.astro";
 
 export async function getStaticPaths() {
-  const articles = await getCollection("blog", ({ data }) => !data.draft);
+  const articles = await getArticles();
 
   return articles
     .map(article => ({
@@ -20,7 +20,7 @@ export async function getStaticPaths() {
 
 const { series } = Astro.params;
 
-const articels = await getCollection("blog", ({ data }) => !data.draft);
+const articels = await getArticles();
 const seiriesArticles = articels.filter(article => article.data.series === series);
 
 // Page properties
