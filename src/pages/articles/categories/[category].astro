@@ -11,8 +11,9 @@ import BoxHeader from "@/components/box/header.astro";
 
 export async function getStaticPaths() {
   const articels = await getArticles();
-  return articels.map(article => ({
-    params: { category: article.data.category },
+  const categories = [...new Set(articels.map(article => article.data.category))];
+  return categories.map(category => ({
+    params: { category },
   }));
 }
 

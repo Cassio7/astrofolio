@@ -11,11 +11,10 @@ import BoxHeader from "@/components/box/header.astro";
 export async function getStaticPaths() {
   const articles = await getArticles();
 
-  return articles
-    .map(article => ({
-      params: { series: article.data.series || "" },
-    }))
-    .filter(({ params }) => params.series !== "");
+  const series = [...new Set(articles.map(article => article.data.series).filter(series => series !== undefined))];
+  return series.map(series => ({
+    params: { series },
+  }));
 }
 
 const { series } = Astro.params;
