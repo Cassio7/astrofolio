@@ -3,7 +3,7 @@ pubDatetime: 2026-10-11
 title: Where Did My Global Packages Go?
 category: coding
 draft: false
-image: /og-images/projects/nvmem.png
+image: /og-images/projects/nvmtree.png
 tags:
   - rust
   - node
@@ -31,26 +31,25 @@ The only way to find out was the manual one: `nvm use 20`, `npm ls -g`, write it
 
 So I did what every developer does: instead of solving it in five minutes, I built a tool.
 
-## Meet nvmem
+## Meet nvmtree
 
-**nvmem** (_nvm_ + _memory_) does one thing: it shows you what's installed in every Node version, and helps you copy it to the next one.
+**nvmtree** is basically `nvm ls` grown into a tree: every Node version you have, with its global packages hanging underneath it. It does one thing: it shows you what's installed in every Node version, and helps you copy it to the next one.
+This is what plain `nvmtree` looks like: every Node version, its global packages, and the commands each one adds.
 
-This is what plain `nvmem` looks like: every Node version, its global packages, and the commands each one adds.
-
-![nvmem output: every Node version with its global packages](/og-images/projects/nvmem.png)
+![nvmtree output: every Node version with its global packages](/og-images/projects/nvmtree.png)
 
 ```bash
-nvmem                  # every version and its global packages, as a tree
-nvmem --table          # package × version matrix
-nvmem diff 24 26       # what 24 has that 26 doesn't, plus the command to install it
-nvmem which tsc        # which versions have it
-nvmem -u               # also check npm for updates and deprecations
+nvmtree                  # every version and its global packages, as a tree
+nvmtree --table          # package × version matrix
+nvmtree diff 24 26       # what 24 has that 26 doesn't, plus the command to install it
+nvmtree which tsc        # which versions have it
+nvmtree -u               # also check npm for updates and deprecations
 ```
 
 The part I use the most is `diff`. It doesn't just tell you what's missing, it prints the exact `npm install -g` command to fix it, so you can copy and paste it, or run it directly:
 
 ```bash
-eval "$(nvmem diff 24 26 --command-only)"
+eval "$(nvmtree diff 24 26 --command-only)"
 ```
 
 New Node version, one command, and all my tools are back.
@@ -62,7 +61,7 @@ At work I write TypeScript every day, with NestJS and Angular. So the obvious ch
 Rust solved that, and gave me a few nice extras:
 
 - **One single binary.** No runtime, no `node_modules`, nothing to install first. You download one file and it works, on macOS, Linux and Windows.
-- **Fast.** nvmem doesn't call `nvm` or `npm` at all. It reads nvm's folders directly from disk, so the full list shows up instantly instead of waiting for `npm ls -g` once per version.
+- **Fast.** nvmtree doesn't call `nvm` or `npm` at all. It reads nvm's folders directly from disk, so the full list shows up instantly instead of waiting for `npm ls -g` once per version.
 - **It made me learn something new.** Going from TypeScript to Rust is not a walk in the park. The compiler is strict, and at the beginning it feels like it's arguing with you about everything. But once the code compiles, it usually just works, and that feeling is pretty addictive.
 
 ## Small tool, serious care
@@ -80,14 +79,14 @@ Probably overkill for a package lister. But if I'm asking people to trust my bin
 
 ```bash
 # macOS / Linux
-curl -fsSL https://raw.githubusercontent.com/Cassio7/nvmem/main/install.sh | sh
+curl -fsSL https://raw.githubusercontent.com/Cassio7/nvmtree/main/install.sh | sh
 ```
 
 ```powershell
 # Windows (PowerShell)
-irm https://raw.githubusercontent.com/Cassio7/nvmem/main/install.ps1 | iex
+irm https://raw.githubusercontent.com/Cassio7/nvmtree/main/install.ps1 | iex
 ```
 
-The project is open source on [GitHub](https://github.com/Cassio7/nvmem), under the MIT license. It only supports nvm and nvm-windows for now, so no fnm, Volta or asdf, at least not yet.
+The project is open source on [GitHub](https://github.com/Cassio7/nvmtree), under the MIT license. It only supports nvm and nvm-windows for now, so no fnm, Volta or asdf, at least not yet.
 
 If you try it, let me know what you think. Issues, ideas and stars are all welcome, and if it saves you even one `command not found` after a Node update, my job here is done.
