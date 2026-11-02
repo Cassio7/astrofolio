@@ -1,6 +1,6 @@
 ---
 pubDatetime: 2026-10-11
-title: Where Did My Global Packages Go?
+title: "Where Did My Global Packages Go? Building nvmtree in Rust"
 category: coding
 draft: false
 image: /og-images/projects/nvmtree.png
@@ -9,10 +9,10 @@ tags:
   - node
   - cli
   - opensource
-description: Every new Node version made my global packages disappear, so I built a small tool in Rust to find them and bring them back.
+description: Every new Node version made my global packages disappear, so I built nvmtree, a small Rust CLI for nvm, to find them and bring them back.
 ---
 
-# Where Did My Global Packages Go?
+# Where Did My Global Packages Go? Building nvmtree in Rust
 
 A new Node version comes out, so you do the responsible thing: `nvm install`, switch to it, done.
 
@@ -87,6 +87,6 @@ curl -fsSL https://raw.githubusercontent.com/Cassio7/nvmtree/main/install.sh | s
 irm https://raw.githubusercontent.com/Cassio7/nvmtree/main/install.ps1 | iex
 ```
 
-The project is open source on [GitHub](https://github.com/Cassio7/nvmtree), under the MIT license. It only supports nvm and nvm-windows for now, so no fnm, Volta or asdf, at least not yet.
+The project is open source on [GitHub](https://github.com/Cassio7/nvmtree), under the MIT license, and the [nvmtree project page](/projects/nvmtree/) has the full list of features. It only supports nvm and nvm-windows for now, so no fnm, Volta or asdf, at least not yet.
 
 If you try it, let me know what you think. Issues, ideas and stars are all welcome, and if it saves you even one `command not found` after a Node update, my job here is done.

@@ -1,0 +1,17 @@
+---
+import { getCollection } from "astro:content";
+
+import Box from "@/components/box/index.astro";
+import BoxHeader from "@/components/box/header.astro";
+import BoxTitle from "@/components/box/title.astro";
+import ProjectItem from "./project-item.astro";
+
+const projects = await getCollection("projects", ({ data }) => data.type === "core");
+---
+
+<Box>
+  <BoxHeader>
+    <BoxTitle> Projects </BoxTitle>
+  </BoxHeader>
+  {projects.map(project => <ProjectItem project={project} />)}
+</Box>

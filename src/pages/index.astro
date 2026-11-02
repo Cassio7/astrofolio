@@ -5,12 +5,22 @@ import Profile from "@/components/profile.astro";
 import About from "@/components/sections/about.astro";
 import Education from "@/components/sections/education/education.astro";
 import Experience from "@/components/sections/experience/experience.astro";
+import Projects from "@/components/sections/projects/projects.astro";
 import TechStack from "@/components/tech-stack.astro";
 import Pattern from "@/components/ui/pattern.astro";
 import Layout from "@/layouts/layout.astro";
+import { SITE } from "@/lib/config";
+
+const schema = {
+  "@type": "WebSite",
+  name: SITE.title,
+  description: SITE.desc,
+  url: SITE.profile,
+  author: { "@id": `${SITE.profile}#person` },
+};
 ---
 
-<Layout title="Alessio Cassieri">
+<Layout title={SITE.title} schema={schema}>
   <Navbar />
 
   <main id="main" aria-label="Main content" class="mx-auto min-h-[calc(100dvh-120px)] max-w-3xl">
@@ -22,6 +32,8 @@ import Layout from "@/layouts/layout.astro";
     <TechStack />
     <Pattern />
     <Experience />
+    <Pattern />
+    <Projects />
     <Pattern />
     <Education />
     <Pattern />

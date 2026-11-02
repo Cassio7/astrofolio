@@ -1,6 +1,7 @@
 ---
 import { capitalizeFirstLetter } from "@/lib/utils";
 import Layout from "./layout.astro";
+import { SITE } from "@/lib/config";
 import { ArrowLeft } from "lucide-react";
 import Navbar from "@/components/navbar/index.astro";
 import Footer from "@/components/footer.astro";
@@ -25,9 +26,24 @@ interface Props {
   image?: string;
   description: string;
   draft?: boolean;
+  tags?: string[];
 }
 
-const { title, readTime, description, date, headings, image, draft } = Astro.props;
+const { title, readTime, description, date, headings, image, draft, tags } = Astro.props;
+
+const url = new URL(Astro.url.pathname, Astro.site).toString();
+
+const schema = {
+  "@type": "BlogPosting",
+  headline: title,
+  description,
+  url,
+  mainEntityOfPage: url,
+  datePublished: date.toISOString(),
+  ...(image && { image: new URL(image, Astro.site).toString() }),
+  ...(tags && { keywords: tags.join(", ") }),
+  author: { "@id": `${SITE.profile}#person` },
+};
 
 const formattedDate = new Intl.DateTimeFormat("en-GB", {
   day: "2-digit",
@@ -38,13 +54,20 @@ const formattedDate = new Intl.DateTimeFormat("en-GB", {
   .replace(/\//g, ".");
 ---
 
-<Layout title={`${title}`} ogImage={image} description={description}>
+<Layout
+  title={`${title}`}
+  ogImage={image}
+  description={description}
+  pageType="article"
+  publishedTime={date}
+  schema={schema}
+>
   <Navbar className="top-1" />
 
   <main id="main" aria-label="Main content" class="min-h-dvh">
     <div class="mx-auto max-w-3xl">
       <Pattern className="h-14">
-        <LinkBtn ariaLabel="Back link" className="absolute bottom-0 left-2 z-1" href="/articles">
+        <LinkBtn ariaLabel="Back link" className="absolute bottom-0 left-2 z-1" href="/articles/">
           <ArrowLeft />
         </LinkBtn>
       </Pattern>

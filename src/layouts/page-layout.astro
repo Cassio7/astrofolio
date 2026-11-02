@@ -23,7 +23,7 @@ interface Props {
 const { title, description, backLink } = Astro.props;
 ---
 
-<Layout title={`${title}`}>
+<Layout title={`${title}`} description={description}>
   <Navbar />
   <main id="main" class="mx-auto w-full max-w-3xl flex-1" aria-label="Main content">
     <Pattern className="h-14">
