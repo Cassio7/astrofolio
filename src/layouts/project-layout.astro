@@ -1,6 +1,7 @@
 ---
 import { buttonVariants, capitalizeFirstLetter } from "@/lib/utils";
 import Layout from "./layout.astro";
+import { SITE } from "@/lib/config";
 import { ArrowLeft } from "lucide-react";
 import Navbar from "@/components/navbar/index.astro";
 import Footer from "@/components/footer.astro";
@@ -28,15 +29,28 @@ interface Props {
 }
 
 const { title, technologies, description, preview, sourceCode, image } = Astro.props;
+
+const url = new URL(Astro.url.pathname, Astro.site).toString();
+
+const schema = {
+  "@type": "SoftwareSourceCode",
+  name: title,
+  description,
+  url,
+  programmingLanguage: technologies,
+  ...(sourceCode && { codeRepository: sourceCode }),
+  ...(image && { image: new URL(image, Astro.site).toString() }),
+  author: { "@id": `${SITE.profile}#person` },
+};
 ---
 
-<Layout title={`${title}`} ogImage={image} description={description}>
+<Layout title={`${title}`} ogImage={image} description={description} schema={schema}>
   <Navbar />
 
   <main id="main" class="mx-auto w-full max-w-3xl flex-1" aria-label="Main content">
     <Pattern className="h-14">
       <div class="z-1 mx-2 mt-auto flex w-full items-center justify-between">
-        <LinkBtn ariaLabel="Back btn" href="/projects">
+        <LinkBtn ariaLabel="Back btn" href="/projects/">
           <ArrowLeft />
         </LinkBtn>
         <div>
