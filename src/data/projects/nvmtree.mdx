@@ -7,7 +7,7 @@ technologies:
   - Rust
   - Shell
   - PowerShell
-description: Cross-platform CLI in Rust that lists the global npm packages of every Node version managed by nvm, flags updates and prints the command to move them to a new version.
+description: Cross-platform CLI in Rust that lists the global npm packages of every Node version managed by nvm, flags package and Node updates, and prints the command to move everything to a new version.
 ---
 
 # nvmtree
@@ -16,43 +16,47 @@ description: Cross-platform CLI in Rust that lists the global npm packages of ev
 
 ![nvmtree output: every Node version with its global packages](/og-images/projects/nvmtree.png)
 
-## Introduction
+## Why I built it
 
-Every Node version managed by **nvm** (macOS, Linux) or **nvm-windows** has its own set of global packages. Install a new Node and your `tsc`, `pnpm` or `nodemon` commands are suddenly gone, and there's no easy way to see what you had before.
+Every Node version managed by **nvm** (macOS, Linux) or **nvm-windows** has its own set of global packages. Install a new Node and your `tsc`, `pnpm` or `nodemon` are suddenly gone, and there's no easy way to see what you had before. The only answer was `nvm use X && npm ls -g`, once per version, comparing the lists by eye.
 
-**nvmtree** solves that. It lists the global packages of each Node version, flags outdated and deprecated ones, and prints the exact command to reinstall them on another version.
+I wanted one command that shows the whole picture and tells me exactly what to run to fix it. That became **nvmtree**: it lists the global packages of every Node version, flags what's outdated, and prints the commands to bring things over or clean them up.
 
-It's read-only, offline by default, never spawns `nvm` or `npm`, and ships as a single binary.
+## What it does
 
-## Main Features
+- **Overview**: every installed Node version with its global packages as a tree, or as a package × version matrix. It marks the default and current versions, `npm link`ed packages, and the commands each package adds.
+- **Diff between versions**: what one version has that another doesn't, plus the `npm install -g` command to bring it over, ready to pipe into the shell.
+- **Find a command**: which Node versions have a package, searching by package name or by command (`which tsc` finds `typescript`).
+- **Updates, on request**: with `-u` it checks npm for newer and deprecated packages, and nodejs.org for newer Node releases, then prints the `nvm install` / `nvm uninstall` commands to tidy up.
+- **npx cache**: packages run with `npx` live in a shared cache, not in any Node version, so they looked "missing". nvmtree shows them separately, with size and last use.
+- **JSON output**: a versioned JSON format, so scripts and other tools can build on it.
 
-- **Overview**  
-  `nvmtree` shows every installed Node version and its global packages as a tree, or as a package × version matrix with `--table`. It marks the default and current versions, packages linked with `npm link`, and the commands each package adds.
+This is the big picture, not the full changelog. The tool keeps getting smaller features and fixes, so for the latest version and everything it can do, check the [README](https://github.com/Cassio7/nvmtree#readme) and the [releases](https://github.com/Cassio7/nvmtree/releases).
 
-- **Diff between versions**  
-  `nvmtree diff 24 26` shows what version 24 has that 26 doesn't, and prints the `npm install -g` command to bring it over. With `--command-only` the output can be piped straight into the shell.
+## Design decisions
 
-- **Find a command**  
-  `nvmtree which tsc` tells you which Node versions have a package or command installed.
+- **Rust, not Node.** A tool that fixes your Node setup shouldn't depend on your Node setup. Rust gives a single binary with no runtime, for macOS, Linux and Windows.
+- **Reads the disk, never runs `nvm` or `npm`.** nvmtree reads nvm's folders directly, so the full list shows up instantly and has no side effects.
+- **Read-only.** It never installs, removes or changes anything. It prints commands, and you decide whether to run them.
+- **Offline by default.** It only talks to the npm registry and nodejs.org when you pass `-u`, and caches the answers, so your package list stays on your machine.
+- **Updates that actually run.** A suggested update has to work on the Node version it's for: if the latest release of a package needs a newer Node, nvmtree suggests the newest one that fits instead.
+- **Plain CLI.** No interactive prompts: it prints and exits, and colors switch off when the output is piped or `NO_COLOR` is set.
 
-- **Updates and deprecations**  
-  With `-u`, nvmtree asks the npm registry about every package in parallel, caches the answers for 6 hours, and marks newer versions and deprecated packages.
-
-## How it works
-
-- It reads nvm's folders directly from disk instead of calling `nvm` or `npm`, so it's fast and has no side effects.
-- It never touches the network unless you pass `-u`, so your list of packages stays private by default.
-- Colors switch off automatically when the output is piped or `NO_COLOR` is set.
-
-## Security & Distribution
+## Security & distribution
 
 Since it's a tool people install with a one-line `curl | sh`, I put extra care into the supply chain:
 
 - **CI on GitHub Actions** builds and tests on Linux, macOS and Windows. Pushing a `v*` tag builds release binaries for 5 targets.
 - One-line **install scripts** for macOS/Linux (`sh`) and Windows (PowerShell) verify every download against its **SHA256 checksum**.
-- Release binaries carry a signed **build provenance attestation**, proving they were built from this repository's code.
+- Release binaries carry a signed **build provenance attestation**, proving they were built from the repository's code.
 - Package names and versions are validated before they go into generated shell commands, and terminal control characters are stripped from the output.
-- Workflows use least-privilege permissions and actions pinned to exact commits, kept up to date by Dependabot.
+- Workflows use least-privilege permissions and actions pinned to exact commits, kept up to date by Dependabot, with a weekly `cargo audit` against the RustSec advisory database.
+
+## What I learned
+
+- Writing Rust coming from TypeScript: fighting the borrow checker at first, then trusting it.
+- Shipping a cross-platform CLI end to end: release pipeline, install scripts, checksums and attestations.
+- Naming matters: the tool started as `nvmem`, which turned out to be the name of a Linux kernel subsystem, so searches landed on kernel docs. Renaming it to `nvmtree` was a breaking change, but it made the project findable.
 
 ## Install
 
@@ -65,5 +69,7 @@ curl -fsSL https://raw.githubusercontent.com/Cassio7/nvmtree/main/install.sh | s
 # Windows (PowerShell)
 irm https://raw.githubusercontent.com/Cassio7/nvmtree/main/install.ps1 | iex
 ```
+
+Run the same command again to update to the latest release.
 
 The project is open source on [GitHub](https://github.com/Cassio7/nvmtree) under the MIT license. Want the story behind it? Read [Where Did My Global Packages Go?](/articles/nvmtree/).
