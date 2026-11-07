@@ -43,7 +43,8 @@ nvmtree                  # every version and its global packages, as a tree
 nvmtree --table          # package × version matrix
 nvmtree diff 24 26       # what 24 has that 26 doesn't, plus the command to install it
 nvmtree which tsc        # which versions have it
-nvmtree -u               # also check npm for updates and deprecations
+nvmtree npx              # what npx has cached, and how to clean it
+nvmtree -u               # also check for package and Node updates
 ```
 
 The part I use the most is `diff`. It doesn't just tell you what's missing, it prints the exact `npm install -g` command to fix it, so you can copy and paste it, or run it directly:
@@ -53,6 +54,12 @@ eval "$(nvmtree diff 24 26 --command-only)"
 ```
 
 New Node version, one command, and all my tools are back.
+
+A couple of other things I ended up loving:
+
+- **`-u` cleans house.** It checks npm for outdated or deprecated packages, and nodejs.org for newer Node releases. Then it prints the `nvm install` and `nvm uninstall` commands to get rid of those three old 22.x patches you forgot about. And it's smart about it: if the latest version of a package needs a newer Node than the one you're on, it suggests the newest one that actually runs there.
+- **The npx mystery, solved.** Stuff you run with `npx` isn't installed in any Node version, it sits in a shared cache. So it looked like it was gone, when it wasn't. `nvmtree npx` shows what's in there, how big it is, and when you last used it.
+- **`--json`**, if you want to build your own scripts on top of it.
 
 ## Why Rust?
 
@@ -87,6 +94,10 @@ curl -fsSL https://raw.githubusercontent.com/Cassio7/nvmtree/main/install.sh | s
 irm https://raw.githubusercontent.com/Cassio7/nvmtree/main/install.ps1 | iex
 ```
 
-The project is open source on [GitHub](https://github.com/Cassio7/nvmtree), under the MIT license, and the [nvmtree project page](/projects/nvmtree/) has the full list of features. It only supports nvm and nvm-windows for now, so no fnm, Volta or asdf, at least not yet.
+Already have it? Run the same command again and you're on the latest version.
+
+nvmtree keeps growing, and I won't rewrite this post for every new flag. For the newest version and everything it can do, check the [README](https://github.com/Cassio7/nvmtree#readme) and the [releases](https://github.com/Cassio7/nvmtree/releases) on GitHub, or just run `nvmtree --help`. If you're curious about how and why I built it, that's on the [nvmtree project page](/projects/nvmtree/).
+
+It's open source under the MIT license, and it only supports nvm and nvm-windows for now, so no fnm, Volta or asdf, at least not yet.
 
 If you try it, let me know what you think. Issues, ideas and stars are all welcome, and if it saves you even one `command not found` after a Node update, my job here is done.
